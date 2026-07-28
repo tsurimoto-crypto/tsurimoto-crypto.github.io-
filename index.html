@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Window of Tomorrow ｜ 六本木アートナイト2026</title>
+  <meta name="description" content="Window of Tomorrow ― 作・演出 亀山淳史郎。変化する空の景色を舞台装置とした体験型パフォーマンス・空間インスタレーション。六本木アートナイト2026。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- 流れるグラデーション背景(WebGL) -->
+  <canvas id="sky"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ゆらぎ用SVGフィルター -->
+  <svg class="defs" aria-hidden="true" width="0" height="0">
+    <filter id="wobble">
+      <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="noise">
+        <animate attributeName="baseFrequency" dur="18s" values="0.008 0.012;0.012 0.008;0.008 0.012" repeatCount="indefinite" />
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </svg>
+
+  <!-- ナビ -->
+  <header class="nav">
+    <a class="nav__logo" href="#hero">WoT</a>
+    <nav class="nav__menu">
+      <a href="#info">Info</a>
+      <a href="#concept">Concept</a>
+      <a href="#timetable">Timetable</a>
+      <a href="#artist">Artist</a>
+      <a href="#access">Access</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="panel panel--hero" id="hero" data-stop="0">
+      <div class="hero__inner">
+        <h1 class="hero__title">
+          <span class="hero__line" data-text="Window">Window</span>
+          <span class="hero__line hero__of" data-text="of">of</span>
+          <span class="hero__line" data-text="Tomorrow">Tomorrow</span>
+        </h1>
+        <p class="hero__count">開催まで あと <span id="countdown">--</span> 日</p>
+      </div>
+      <div class="scroll-hint" aria-hidden="true"><span>Scroll</span><i></i></div>
+    </section>
+
+    <!-- SHOW INFO -->
+    <section class="panel panel--center" id="info" data-stop="1">
+      <div class="panel__inner">
+        <h2 class="cat" data-reveal>Show Info</h2>
+        <div class="info__head reveal" data-reveal>
+          <span class="rule"></span>
+          <p class="info__event">六本木アートナイト2026</p>
+          <span class="rule"></span>
+        </div>
+        <p class="info__date reveal" data-reveal>2026.10.31<span>(Sat)</span>24:00〜</p>
+        <p class="info__note reveal" data-reveal>※翌11月1日 6:00ごろまで開催</p>
+        <p class="info__place reveal" data-reveal>六本木ヒルズ ローズガーデン</p>
+        <p class="info__place-sub reveal" data-reveal>（メインステージ）</p>
+
+        <div class="credits reveal" data-reveal>
+          <span class="credits__rule"></span>
+          <dl class="credits__list">
+            <div class="credit"><dt>作・演出</dt><dd>亀山淳史郎</dd></div>
+            <div class="credit"><dt>パフォーマンス"Moon"</dt><dd>出演：アオイツキ</dd></div>
+            <div class="credit"><dt>パフォーマンス"Sun"</dt><dd>出演：ATSUSHI</dd></div>
+            <div class="credit"><dt>建築</dt><dd>國清尚之</dd></div>
+            <div class="credit"><dt>音楽</dt><dd>Nao'ymt</dd></div>
+            <div class="credit"><dt>スタイリスト</dt><dd>Remi Takenouchi</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCEPT -->
+    <section class="panel panel--center" id="concept" data-stop="2">
+      <div class="panel__inner">
+        <h2 class="cat" data-reveal>Concept</h2>
+        <div class="concept__body">
+          <p class="reveal" data-reveal>『Window of Tomorrow』は、作・演出を亀山淳史郎が手がける、<br />変化する空の景色を舞台装置とした体験型パフォーマンス・空間インスタレーション作品です。</p>
+          <p class="reveal" data-reveal>3年ぶりにオールナイトの芸術祭として復活する六本木アートナイトのために制作された本作は、<br />夜空とローズガーデンを舞台に一夜を通じて様々なストーリーと体験が展開していきます。</p>
+          <p class="reveal" data-reveal>0:00の「Moon」にはアオイツキが、6:00の「Sun」にはATSUSHIがパフォーマーとして出演します。<br />六本木の忙しない夜空を眺める体験。この日だけの一度きりの光景。</p>
+          <p class="reveal" data-reveal>「明日への窓」から見えるのは、境界なくうつろいゆく昨日・今日・明日であり、<br />自然の変化にわたしたちが「生き、生かされている」というグラデーショナルな感性です。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMETABLE -->
+    <section class="panel panel--center" id="timetable" data-stop="3">
+      <div class="panel__inner">
+        <h2 class="cat" data-reveal>Timetable</h2>
+        <ul class="tt reveal" data-reveal>
+          <li class="tt__row">
+            <span class="tt__time">0:00</span>
+            <div class="tt__body">
+              <p class="tt__title">『0:00 — Moon　月とタワー』<span class="tt__at">@メインステージ</span></p>
+              <p class="tt__cast">出演：アオイツキ（アオイヤマダと高村月）</p>
+            </div>
+          </li>
+          <li class="tt__row">
+            <span class="tt__time">0:30<small>頃</small></span>
+            <div class="tt__body">
+              <p class="tt__title">アフターステージ</p>
+              <p class="tt__cast">出演：アオイツキ（アオイヤマダと高村月）</p>
+            </div>
+          </li>
+          <li class="tt__row">
+            <span class="tt__time">3:00<small>頃</small></span>
+            <div class="tt__body">
+              <p class="tt__title">プレステージ</p>
+              <p class="tt__cast">出演：ATSUSHI</p>
+            </div>
+          </li>
+          <li class="tt__row">
+            <span class="tt__time">5:15<small>〜</small></span>
+            <div class="tt__body">
+              <p class="tt__title">『6:00 — Sun　新しい手紙』<span class="tt__at">@メインステージ</span></p>
+              <p class="tt__cast">出演：ATSUSHI</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ARTIST -->
+    <section class="panel panel--center" id="artist" data-stop="4">
+      <div class="panel__inner">
+        <h2 class="cat" data-reveal>Artist</h2>
+        <ul class="people people--main reveal" data-reveal>
+          <li class="person">
+            <div class="person__photo" data-ph>写真</div>
+            <p class="person__role">作・演出</p>
+            <p class="person__name">亀山淳史郎</p>
+          </li>
+          <li class="person">
+            <div class="person__photo" data-ph>写真</div>
+            <p class="person__role">"Moon"出演</p>
+            <p class="person__name">アオイツキ</p>
+            <p class="person__note">（アオイヤマダと高村月）</p>
+          </li>
+          <li class="person">
+            <div class="person__photo" data-ph>写真</div>
+            <p class="person__role">"Sun"出演</p>
+            <p class="person__name">ATSUSHI</p>
+          </li>
+        </ul>
+
+        <h3 class="cat cat--sub" data-reveal>Staff</h3>
+        <ul class="people people--staff reveal" data-reveal>
+          <li class="person">
+            <div class="person__photo" data-ph>写真</div>
+            <p class="person__role">建築</p>
+            <p class="person__name">國清尚之</p>
+          </li>
+          <li class="person">
+            <div class="person__photo" data-ph>写真</div>
+            <p class="person__role">音楽</p>
+            <p class="person__name">Nao'ymt</p>
+          </li>
+          <li class="person">
+            <div class="person__photo" data-ph>写真</div>
+            <p class="person__role">スタイリスト</p>
+            <p class="person__name">Remi Takenouchi</p>
+          </li>
+          <li class="person">
+            <div class="person__photo" data-ph>写真</div>
+            <p class="person__role">ヘアメイク</p>
+            <p class="person__name">XXXXXXXXXX</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ACCESS -->
+    <section class="panel panel--center" id="access" data-stop="5">
+      <div class="panel__inner">
+        <h2 class="cat" data-reveal>Access</h2>
+        <div class="access__map reveal" data-reveal>
+          <iframe
+            title="六本木ヒルズ ローズガーデン 地図"
+            src="https://www.google.com/maps?q=六本木ヒルズ+ローズガーデン&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <p class="access__addr reveal" data-reveal>〒106-0032　東京都港区六本木6　六本木ヒルズ ローズガーデン</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="panel panel--center" id="contact" data-stop="6">
+      <div class="panel__inner">
+        <h2 class="cat" data-reveal>Contact</h2>
+        <a class="contact__mail reveal" data-reveal href="mailto:contact@signing.co.jp">contact@signing.co.jp</a>
+      </div>
+
+      <footer class="foot">
+        <dl class="foot__list">
+          <div><dt>企画・制作</dt><dd>株式会社 SIGNING</dd></div>
+          <div><dt>グラフィックデザイン</dt><dd>Hi! Design</dd></div>
+          <div><dt>協力</dt><dd>プラレール</dd></div>
+        </dl>
+        <p class="foot__copy">© 2026 Window of Tomorrow</p>
+      </footer>
+    </section>
+
+  </main>
+
+  <script src="js/background.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
